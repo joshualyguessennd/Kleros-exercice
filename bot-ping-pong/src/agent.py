@@ -39,7 +39,7 @@ def handle_transaction(transaction_event):
     for event in events:
         event_name = event.get("event")
         if event_name == 'Ping':
-	    hash = transaction_event.hash
+            hash = transaction_event.hash
             findings.append(
                 Finding({
                     'name': 'Ping event listener',
