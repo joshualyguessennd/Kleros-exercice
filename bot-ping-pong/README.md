@@ -16,3 +16,10 @@ Describe each of the type of alerts fired by this agent
   - Severity is always set to "INFO" (mention any conditions where it could be something else)
   - Type is always set to "INFO" (mention any conditions where it could be something else)
 
+# Using Repo
+
+```npm install``` install the requirements
+```npm start``` run the script
+
+
+
