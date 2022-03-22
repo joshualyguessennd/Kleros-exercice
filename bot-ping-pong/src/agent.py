@@ -9,7 +9,6 @@ with open("./src/ABI/abi.json", "r") as abi_file:
     pingpong_abi = json.load(abi_file)
 
 # connect to web3 provider
-INFURA_KEY=os.getenv("INFURA_KEY")
 w3 = Web3(Web3.HTTPProvider("https://kovan.infura.io/v3/0a7b42115f6a48c0b2aa5be4aacfd789"))
 private_key = os.getenv("ETHEREUM_PRIVATE_KEY")
 account = "0x27a1876A09581E02E583E002E42EC1322abE9655"
@@ -20,7 +19,7 @@ pong_abi = next((x for x in pingpong_abi if x.get('name', "") == "Pong"), None)
 
 startedBlock = w3.eth.get_block('latest')
 f = open('./src/block.txt', 'a')
-f.write(f"{startedBlock.number}")
+f.write(f"{startedBlock.number}\n")
 f.close()
 
 
