@@ -18,6 +18,7 @@ contract KlerosExercice {
         _;
     }
 
+    // owner can withdraw ETH amount of the contract 
     function withdraw() external onlyOwner {
         uint amount = address(this).balance;
         (bool success, ) = payable(msg.sender).call{value: amount}('');
@@ -28,6 +29,15 @@ contract KlerosExercice {
             lastUpdate = block.timestamp;
         }
         
+    }
+
+    // allow heir to withdraw amount if owner is absent for more than 30 days
+    function withdrawHasHeir() external {
+        require(msg.sender == heir, "!heir");
+        require(lastUpdate + 30 days <= block.timestamp, "!time");
+        uint amount = address(this).balance;
+        (bool success, ) = payable(msg.sender).call{value: amount}('');
+        require(success);
     }
 
 

@@ -28,7 +28,15 @@ contract Solution is DSTest {
         assertEq(0, solution.lastUpdate());
         vm.expectRevert("!owner");
         solution.withdraw();
+        // test withdraw heir
+        vm.startPrank(heir);
+        vm.expectRevert("!time");
+        solution.withdrawHasHeir();
+        vm.warp(2700000);
+        solution.withdrawHasHeir();
     }
+
+
 
     function testnewHair() public {
         vm.prank(deployer);
