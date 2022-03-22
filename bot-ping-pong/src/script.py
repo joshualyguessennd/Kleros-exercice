@@ -6,8 +6,8 @@ from web3 import Web3
 with open("./src/abi/abi.json", "r") as abi_file:
     pingpong_abi = json.load(abi_file)
 
-
-w3 = Web3(Web3.HTTPProvider("https://kovan.infura.io/v3/0a7b42115f6a48c0b2aa5be4aacfd789"))
+INFURA_KEY=os.getenv("INFURA_KEY")
+w3 = Web3(Web3.HTTPProvider("https://kovan.infura.io/v3/$INFURA_KEY"))
 private_key = os.getenv("ETHEREUM_PRIVATE_KEY")
 account = "0x27a1876A09581E02E583E002E42EC1322abE9655"
 
