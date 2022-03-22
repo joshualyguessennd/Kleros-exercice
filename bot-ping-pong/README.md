@@ -2,7 +2,7 @@
 
 ## Description
 
-This agent detects ping transaction on Kleros Ping pong contract and run a pong response
+This agent detects ping transaction on Kleros Ping pong contract on exercie K and run a pong response 
 ## Supported Chains
 
 - Ethereum Kovan
