@@ -5,12 +5,12 @@ from forta_agent import Finding, FindingType, FindingSeverity
 from src.const import PINGPONG_ADDRESS
 
 # ping pong abi
-with open("./src/abi/abi.json", "r") as abi_file:
+with open("./src/ABI/abi.json", "r") as abi_file:
     pingpong_abi = json.load(abi_file)
 
 # connect to web3 provider
 INFURA_KEY=os.getenv("INFURA_KEY")
-w3 = Web3(Web3.HTTPProvider("https://kovan.infura.io/v3/$INFURA_KEY"))
+w3 = Web3(Web3.HTTPProvider("https://kovan.infura.io/v3/${INFURA_KEY}"))
 private_key = os.getenv("ETHEREUM_PRIVATE_KEY")
 account = "0x27a1876A09581E02E583E002E42EC1322abE9655"
 # enumerate Event 
@@ -38,8 +38,8 @@ def handle_transaction(transaction_event):
     events = transaction_event.filter_log([json.dumps(x) for x in list(targeted_events.values())], PINGPONG_ADDRESS)
     for event in events:
         event_name = event.get("event")
-        hash = transaction_event.hash
         if event_name == 'Ping':
+	    hash = transaction_event.hash
             findings.append(
                 Finding({
                     'name': 'Ping event listener',
